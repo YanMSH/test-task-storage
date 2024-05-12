@@ -1,4 +1,5 @@
 import React from "react";
+import Card from "react-bootstrap/Card";
 import { NoteProps } from "../../types";
 import { NoteForm } from "../";
 
@@ -30,18 +31,18 @@ const Note = ({
       isEdit
     />
   ) : (
-    <div style={{ display: "flex" }}>
+    <Card.Body>
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <div>{note.title}</div>
-        <div>{note.text}</div>
-        <div>{`Создано ${parseDate(note.createdAt)}`}</div>
-        <div>{`Последнее изменение ${parseDate(
+        <Card.Title>{note.title}</Card.Title>
+        <Card.Text>{note.text}</Card.Text>
+        <Card.Text>{`Создано: ${parseDate(note.createdAt)}`}</Card.Text>
+        <Card.Text>{`Последнее изменение: ${parseDate(
           note.updatedAt as number
-        )}`}</div>
+        )}`}</Card.Text>
       </div>
       <button onClick={() => setIsEditMode(true)}>Редактировать</button>
       <button onClick={() => onDelete()}>Удалить</button>
-    </div>
+    </Card.Body>
   );
 };
 

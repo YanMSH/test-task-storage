@@ -1,5 +1,6 @@
 import React from "react";
 import { v4 as idv4 } from "uuid";
+import Card from "react-bootstrap/Card";
 import { NoteProps } from "../../types";
 import { NOTE_PLACEHOLDER } from "../../constants";
 
@@ -37,11 +38,16 @@ const NoteForm = (props: {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input name="title" onChange={handleTitleChange} value={note.title} />
-      <textarea name="text" onChange={handleTextChange} value={note.text} />
-      <button type="submit">Сохранить</button>
-    </form>
+    <Card className="bg-secondary text-white">
+      <form onSubmit={handleSubmit}>
+        <input name="title" onChange={handleTitleChange} value={note.title} />
+
+        <Card.Body>
+          <textarea name="text" onChange={handleTextChange} value={note.text} />
+        </Card.Body>
+        <button type="submit">Сохранить</button>
+      </form>
+    </Card>
   );
 };
 
